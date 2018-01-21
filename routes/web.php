@@ -18,4 +18,4 @@ Route::get(
     'FileuploadController@downloadFile'
 );
 
-Route::get('/files', 'ProjectsController@viewAllFiles');
+Route::get('/files', 'FileuploadController@viewAllFiles');
