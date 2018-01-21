@@ -7,3 +7,15 @@ Route::get('/', function () {
 });
 
 Route::resource('projects', 'ProjectsController');
+
+Route::post(
+    '/upload',
+    'FileuploadController@store'
+)->name('file.store');
+
+Route::get(
+    '/download/{filename}',
+    'FileuploadController@downloadFile'
+);
+
+Route::get('/files', 'ProjectsController@viewAllFiles');
