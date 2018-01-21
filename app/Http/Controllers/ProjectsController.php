@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Upload;
 use App\Http\Requests\ProjectRequest;
 use App\Interfaces\ProjectEloquentInterface;
 use Illuminate\Http\RedirectResponse;
@@ -66,9 +67,12 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        app()->abort(404, 'Not implemented');
+//        app()->abort(404, 'Not implemented');
 
-        return view('projects.show');
+        $project = $this->projects->find($id);
+        $files = $project->files;
+
+        return view('projects.show', compact('project', 'files'));
     }
 
     /**
@@ -107,5 +111,17 @@ class ProjectsController extends Controller
     public function destroy($id)
     {
         app()->abort(404, 'Not implemented');
+    }
+
+    /**
+     * Show the view all files view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function viewAllFiles()
+    {
+        $projects = [];
+
+        return view('projects.showAllFiles', compact('projects'));
     }
 }
