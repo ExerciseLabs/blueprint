@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get(
+    'projects/{id}', function ($id) {
+        return response(
+            [
+                'data' => App\Models\Project::with('files')
+                    ->where('id', $id)->get()
+            ]
+        );
+    }
+);
