@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use App\Interfaces\ProjectEloquentInterface;
-use App\Repositories\ProjectEloquentRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Interfaces\FileEloquentInterface;
+use App\Interfaces\ProjectEloquentInterface;
+use App\Repositories\FileEloquentRepository;
+use App\Repositories\ProjectEloquentRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ProjectEloquentInterface::class, ProjectEloquentRepository::class);
+        $this->app->bind(
+            ProjectEloquentInterface::class, ProjectEloquentRepository::class
+        );
+
+        $this->app->bind(
+            FileEloquentInterface::class, FileEloquentRepository::class
+        );
     }
 }
