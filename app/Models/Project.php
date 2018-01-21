@@ -8,4 +8,14 @@ class Project extends BaseModel
         'name',
         'description',
     ];
+
+    /**
+     * Returns collection of files that belong to a prpject
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function files()
+    {
+        return $this->hasMany('App\Models\File');
+    }
 }
