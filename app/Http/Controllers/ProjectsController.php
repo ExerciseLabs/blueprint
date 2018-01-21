@@ -112,16 +112,4 @@ class ProjectsController extends Controller
     {
         app()->abort(404, 'Not implemented');
     }
-
-    /**
-     * Show the view all files view
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function viewAllFiles()
-    {
-        $projects = [];
-
-        return view('projects.showAllFiles', compact('projects'));
-    }
 }
