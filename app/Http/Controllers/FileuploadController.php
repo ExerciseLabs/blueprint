@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\File as ProjectFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
@@ -68,8 +69,15 @@ class FileuploadController extends Controller
         return response()->download(storage_path(). '/app/'. $fileName);
     }
 
-    public function xx()
+    /**
+     * Show the view all files view
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function viewAllFiles()
     {
-        dd('xx');
+        $files = ProjectFile::with('project')->get();
+
+        return view('projects.showAllFiles', compact('files'));
     }
 }
