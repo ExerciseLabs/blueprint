@@ -1,15 +1,14 @@
 <?php
-/**
- * FileEloquentRepository
- *
- * @author Florence Okosun <florence.okosun@getitllc.com>
- * @copyright Copyright(c) 2018 Get It, LLC(http://www.getit.me)
- */
 
 namespace App\Repositories;
 
+use App\Models\File;
+use App\Interfaces\FileEloquentInterface;
 
-class FileEloquentRepository
+/**
+ * Class FileEloquentRepository
+ */
+class FileEloquentRepository extends BaseEloquentRepository implements FileEloquentInterface
 {
-
+    protected $modelName = File::class;
 }
