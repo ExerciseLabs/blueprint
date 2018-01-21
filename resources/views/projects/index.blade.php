@@ -10,6 +10,14 @@
         <div class="clearfix"></div>
     </div>
 
+    <div class="actions-container">
+        <a class="pull-left" href="{{ URL::to( '/files')  }}">
+            See all files
+        </a>
+        <div class="clearfix"></div>
+        <br />
+    </div>
+
     <div class="box box-primary">
         <div class="box-body no-padding">
             <table class="table table-bordered table-responsive">
@@ -24,7 +32,11 @@
                 <tbody>
                     @foreach($projects as $project)
                         <tr>
-                            <td>{{ $project->name }}</td>
+                            <td>
+                                <a href="/projects/{{ $project->id }}">
+                                    {{ $project->name }}
+                                </a>
+                            </td>
                             <td>{{ $project->created_at }}</td>
                             <td>{{ $project->updated_at }}</td>
                             <td>
