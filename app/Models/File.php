@@ -1,15 +1,26 @@
 <?php
-/**
- * File
- *
- * @author Florence Okosun <florence.okosun@getitllc.com>
- * @copyright Copyright(c) 2018 Get It, LLC(http://www.getit.me)
- */
 
 namespace App\Models;
 
-
-class File
+/**
+ * Class File
+ */
+class File extends BaseModel
 {
+    protected $fillable = [
+        'mime',
+        'original_name',
+        'project_id',
+        'fileName'
+    ];
 
+    /**
+     * Returns the project that file belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function project()
+    {
+        return $this->belongsTo('App\Models\Project');
+    }
 }
